@@ -1,0 +1,43 @@
+---
+title: "TUGAS KOMPUTASI_3"
+author: "GRACIA ELKRIZA PURBA"
+date: "2026-09-18"
+---
+dev.off()
+#buka data airquality
+data(airquality)
+head(airquality)
+str(airquality)
+summary(airquality)
+
+#buat histogram dan density
+Wind<-airquality$Wind
+#histogram
+hist(Wind,
+freq=F,
+col="purple",
+border="black",
+main="Histogram dan densitas Wind",
+xlab="Wind(mph)")
+lines(density(Wind),col="black",lwd=2)
+#boxplot
+boxplot(Wind,
+main="Boxplot wind",
+ylab="Wind(mph)",
+col="yellow")
+#stem
+stem(Wind)
+#scatter plot
+plot(airquality$Wind, airquality$Ozone,
+main = "Scatter Plot: Wind vs Ozone",
+xlab = "Wind (mph)",
+ylab = "Ozone (ppb)",
+pch = 19, col = "steelblue")
+#scatter plot matrix
+pairs(airquality[ , 1:4],
+      main = "Scatter Plot Matrix - airquality")
+
+par(mar = c(4, 4, 2, 1))
+hist(Wind, freq = FALSE, col = "lightblue",
+     main = "Histogram dan Densitas Wind", xlab = "Wind (mph)")
+lines(density(Wind), col = "darkblue", lwd = 2)
