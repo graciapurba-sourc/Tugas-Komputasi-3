@@ -1,0 +1,55 @@
+---
+title: "TUGAS KOMPUTASI_3"
+author: "GRACIA ELKRIZA PURBA"
+date: "2026-09-18"
+---
+
+library(lattice)
+dev.off()
+#buka data airquality
+data(airquality)
+head(airquality)
+str(airquality)
+summary(airquality)
+# Histogram dengan skala density
+histogram(~ Wind, data = airquality,
+          type = "density",
+          col = "lightblue",
+          main = "Histogram Wind",
+          xlab = "Wind (mph)")
+# Density plot terpisah (kurva kepadatan)
+densityplot(~ Wind, data = airquality,
+            col = "darkblue", lwd = 2,
+            main = "Density Plot Wind",
+            xlab = "Wind (mph)")
+#histogram dan garis demsity dalam 1 plot       
+histogram(~ Wind, data = airquality,
+          type = "density",
+          col = "lightblue",
+          main = "Histogram dan Densitas Wind",
+          xlab = "Wind (mph)",
+          panel = function(x, ...) {
+            panel.histogram(x, ...)
+            panel.densityplot(x, col = "darkblue", lwd = 2, plot.points = FALSE)
+          })
+#stem
+stem(airquality$Wind)
+#scatter plot
+xyplot(Ozone ~ Wind, data = airquality,
+       main = "Scatter Plot: Wind vs Ozone",
+       xlab = "Wind (mph)",
+       ylab = "Ozone (ppb)",
+       pch = 19, col = "steelblue")
+#boxplot
+bwplot(~ Wind, data = airquality,
+       main = "Boxplot Wind",
+       xlab = "Wind (mph)")
+#scatter plot matrix
+splom(~ airquality[ , 1:4],
+      main = "Scatter Plot Matrix - airquality")
+
+#scatter plot per bulan
+xyplot(Ozone ~ Wind | factor(Month), data = airquality,
+       main = "Wind vs Ozone per Bulan",
+       xlab = "Wind (mph)", ylab = "Ozone (ppb)",
+       pch = 19, col = "steelblue")
